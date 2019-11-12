@@ -1,6 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import { GlobalState } from "../store/GlobalState";
 
 class MyApp extends App {
   render() {
@@ -11,7 +12,9 @@ class MyApp extends App {
           <title>cinema Next.js</title>
           <link href="/static/style.css" rel="stylesheet" />
         </Head>
-        <Component {...pageProps} />
+        <GlobalState>
+          <Component {...pageProps} />
+        </GlobalState>
       </>
     );
   }
