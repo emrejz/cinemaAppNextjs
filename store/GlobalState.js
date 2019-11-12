@@ -1,19 +1,23 @@
 import { createContext, useReducer } from "react";
 import { movieReducer } from "./movieReducer";
+import { API_KEY } from "../customEnv";
 export const MovieContext = createContext();
 
 export const GlobalState = ({ children }) => {
   const getMovies = async () => {
     try {
       dispatch({ type: "LOADING" });
-      const data = await fetch(`http://localhost:3001/results`, {
-        method: "GET"
-      });
-      if (data.ok) {
-        let lastData = await data.json();
-        dispatch({ type: "GET_MOVIES", payload: lastData });
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/now_playing?page=1&api_key=${API_KEY}`,
+        {
+          method: "GET"
+        }
+      );
+      const data = await res.json();
+      if (!data.status_message) {
+        dispatch({ type: "GET_MOVIES", payload: data.results });
       } else {
-        dispatch({ type: "ERROR", payload: data.statusText });
+        dispatch({ type: "ERROR", payload: data.status_message });
       }
     } catch (error) {
       dispatch({
