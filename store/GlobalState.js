@@ -6,10 +6,9 @@ export const GlobalState = ({ children }) => {
   const getMovies = async () => {
     try {
       dispatch({ type: "LOADING" });
-      const data = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.REACT_APP_DB_API_KEY}&language=en-US&page=1`
-      );
-      console.log(data);
+      const data = await fetch(`http://localhost:3001/results`, {
+        method: "GET"
+      });
       if (data.ok) {
         let lastData = await data.json();
         dispatch({ type: "GET_MOVIES", payload: lastData });
@@ -17,7 +16,10 @@ export const GlobalState = ({ children }) => {
         dispatch({ type: "ERROR", payload: data.statusText });
       }
     } catch (error) {
-      dispatch({ type: "ERROR" });
+      dispatch({
+        type: "ERROR",
+        payload: error.message ? error.message : "Service error!"
+      });
     }
   };
   const initState = {
