@@ -27,7 +27,7 @@ export const addMovie = async (dispatch, id) => {
   try {
     dispatch({ type: LOADING });
     const res = await fetch(
-      `http://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`,
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`,
       {
         method: "GET"
       }
