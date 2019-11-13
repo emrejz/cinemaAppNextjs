@@ -5,7 +5,7 @@ export default () => {
   const router = useRouter();
   return (
     <Navbar>
-      <a onClick={() => router.push("/")}>Home</a>
+      <a onClick={() => router.pathname != "/" && router.push("/")}>Home</a>
     </Navbar>
   );
 };
