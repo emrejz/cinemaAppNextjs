@@ -12,6 +12,7 @@ class MyApp extends App {
         <Head>
           <title>cinema Next.js</title>
           <link href="/static/style.css" rel="stylesheet" />
+          <link rel="icon" type="image/png" href="/static/favicon.png" />
         </Head>
         <GlobalState>
           <Navbar />
