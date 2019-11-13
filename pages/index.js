@@ -5,9 +5,9 @@ import { Card } from "../styledComponents/Card";
 import { useRouter } from "next/router";
 
 export default () => {
-  const { state } = useContext(MovieContext);
+  const { state, dispatch } = useContext(MovieContext);
   useEffect(() => {
-    if (state.list.length === 0) state.getMovies();
+    if (state.list.length === 0) state.getMovies(dispatch);
   }, []);
   const router = useRouter();
   const posterUrl = path => {

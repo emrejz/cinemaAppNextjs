@@ -1,6 +1,7 @@
 export const LOADING = "LOADING";
 export const ERROR = "ERROR";
 export const GET_MOVIES = "GET_MOVIES";
+export const GET_MOVIE = "GET_MOVIE";
 
 export const movieReducer = (state, action) => {
   const { type, payload } = action;
@@ -12,11 +13,19 @@ export const movieReducer = (state, action) => {
         error: null,
         list: payload
       };
+    case GET_MOVIE:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        movie: payload
+      };
     case LOADING:
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
+        movie: null
       };
     case ERROR:
       return {
