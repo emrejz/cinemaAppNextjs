@@ -18,6 +18,6 @@ body {
   height: fit-content;
   display: flex;
   flex-flow: row wrap;
-  margin: 4vw;
+  margin: 36px;
   justify-content: space-evenly;
 }
