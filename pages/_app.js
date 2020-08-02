@@ -4,10 +4,10 @@ import Head from "next/head";
 import App from "next/app";
 import { SWRConfig } from "swr";
 import fetch from "isomorphic-unfetch";
-import "../public/static/style.css";
 import Navbar from "../components/Navbar";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import "../public/static/style.css";
 
 let currentPath = "/";
 Router.onRouteChangeStart = (e) => {
