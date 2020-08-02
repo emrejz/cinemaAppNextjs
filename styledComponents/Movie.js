@@ -1,7 +1,11 @@
 import styled from "styled-components";
 export const Movie = styled.div(
-  props => `
-  background-image:url("${props.backdrop_path}");
+  (props) => `
+ ${
+   props.backdrop_path
+     ? `background-image: url("${props.backdrop_path}")`
+     : `background-color:black`
+ };
   background-size:cover;
   margin: 0px
   width: 100%;
