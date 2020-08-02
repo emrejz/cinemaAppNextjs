@@ -1,9 +1,9 @@
 import styled from "styled-components";
 export const Header = styled.h1(
-  props => `
+  (props) => `
   color: ${props.color ? props.color : "black"};
   font-size: ${props.lg ? "50px" : props.md ? "40px" : "30px"};
-  text-align: center;
+  text-align: ${props.left ? "left" : "center"};
   margin: 0px
 `
 );
