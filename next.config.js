@@ -1,14 +1,10 @@
-const withPlugins = require("next-compose-plugins");
 const withOffline = require("next-offline");
-const nextEnv = require("next-env");
-const dotenvLoad = require("dotenv-load");
 
-dotenvLoad();
 const nextConfig = {
   target: "serverless",
   transformManifest: (manifest) => ["/"].concat(manifest), // add the homepage to the cache
-  // // Trying to set NODE_ENV=production when running yarn dev causes a build-time error so we
-  // // turn on the SW in dev mode so that we can actually test it
+  // Trying to set NODE_ENV=production when running yarn dev causes a build-time error so we
+  // turn on the SW in dev mode so that we can actually test it
   generateInDevMode: true,
   workboxOpts: {
     swDest: "static/service-worker.js",
@@ -31,6 +27,5 @@ const nextConfig = {
     ],
   },
 };
-const _withOffline = withOffline(nextConfig);
-const _nextEnv = nextEnv();
-module.exports = withPlugins([_nextEnv, _withOffline]);
+
+module.exports = withOffline(nextConfig);

@@ -11,7 +11,7 @@ const MoviePage = ({ initMovie }) => {
   const [error, setError] = useState(null);
   const { id } = router.query;
   const { data, error: err } = useSWR(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_DB_API_KEY}`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_DB_API_KEY}`
   );
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export async function getServerSideProps(context) {
     };
   }
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${context.params.id}?api_key=${process.env.REACT_APP_DB_API_KEY}`
+    `https://api.themoviedb.org/3/movie/${context.params.id}?api_key=${process.env.NEXT_PUBLIC_DB_API_KEY}`
   );
 
   const initMovie = await data.json();

@@ -40,7 +40,7 @@ const StaticMoviesPage = ({ movies }) => {
 
 export async function getStaticProps(context) {
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?page=1&api_key=${process.env.REACT_APP_DB_API_KEY}`
+    `https://api.themoviedb.org/3/movie/now_playing?page=1&api_key=${process.env.NEXT_PUBLIC_DB_API_KEY}`
   );
   const movies = await data.json();
 
