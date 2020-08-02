@@ -1,49 +1,42 @@
-import { useContext, useEffect } from "react";
-import { MovieContext } from "../store/GlobalState";
-import { InfoMessage } from "../styledComponents/InfoMessage";
-import { Card } from "../styledComponents/Card";
-import { useRouter } from "next/router";
+import { Header } from "../styledComponents/Header";
 import Link from "next/link";
-
-export default () => {
-  const { state, dispatch } = useContext(MovieContext);
-  useEffect(() => {
-    if (state.list.length === 0) state.getMovies(dispatch);
-  }, []);
-  const router = useRouter();
-  const posterUrl = path => {
-    return "https://image.tmdb.org/t/p/original" + path;
-  };
-  const goDetail = path => {
-    return "/movie?id=" + path;
-  };
+import styles from "./index.module.css";
+const Home = () => {
   return (
-    <>
-      {(state.loading || state.error) && (
-        <InfoMessage lg error={state.error ? true : null}>
-          {state.loading ? "Loading..." : ""}
-          {state.error ? "Error:" + state.error : ""}
-        </InfoMessage>
-      )}
-      <div className="list">
-        {state.list.map(item => (
-          <Link
-            key={item.id}
-            href={goDetail(item.id)}
-            //    as={"/movie/" + item.id.toString()}
-          >
-            <Card
-              key={item.id}
-              // onMouseEnter={() => {
-              //   router.prefetch("/movie?id=" + item.id);
-              // }} // Todo prefetch
-            >
-              <div className="header">{item.title}</div>
-              <img src={posterUrl(item.poster_path)} alt={item.title} />
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className={styles.homeContainer}>
+      <Link href="/movies/static">
+        <div className={styles.box}>
+          <Header left md>
+            Static Route
+          </Header>
+          <p className={styles.desc}>
+            Next.js will pre-render this page at build time.
+          </p>
+        </div>
+      </Link>
+      <Link href="/movies/dynamic">
+        <div className={styles.box}>
+          <Header left md>
+            Dynamic Route
+          </Header>
+          <p className={styles.desc}>
+            Next.js will pre-render this page on each request using the data
+            returned.
+          </p>
+        </div>
+      </Link>
+      <Link href="/movies/isr">
+        <div className={styles.box}>
+          <Header left md>
+            Isr Route
+          </Header>
+          <p className={styles.desc}>
+            Incremental Static Regeneration allows you to update existing pages
+            by re-rendering them in the background as traffic comes in.
+          </p>
+        </div>
+      </Link>
+    </div>
   );
 };
+export default Home;

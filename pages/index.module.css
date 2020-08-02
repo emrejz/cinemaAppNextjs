@@ -1,0 +1,20 @@
+.homeContainer {
+  margin: 80px;
+  margin-top: 50px;
+}
+.desc {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  margin-top: 8px;
+}
+.box {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.box:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
