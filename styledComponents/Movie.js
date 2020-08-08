@@ -12,7 +12,7 @@ export const Movie = styled.div(
   filter: sepia(1);
   background-size: cover;
   height: fit-content;
-  min-height: calc( 100vh - 70px );
+  min-height: calc( 100vh - 76px );
   align-items: flex-start;
   display: flex;
   justify-content: center;
